@@ -34,15 +34,20 @@ module Slideable
 
     def grow_unblocked_moves_in_dir(dx, dy)
         moves_arr = []
-        new_x, new_y = @pos[0] + dx, @pos[1] + dy
-        pos = [new_x, new_y]
+        new_pos = [@pos[0]+dx, @pos[1]+dy]
         # debugger
-        while @board[pos].is_a?(NullPiece) || @board[pos].color != self.color
-            new_x, new_y = @pos[0] + dx, @pos[1] + dy
-            pos = [new_x, new_y]
-            moves_arr << pos
+        while @board[new_pos] != nil && @board[new_pos].is_a?(NullPiece)
             
-            break if @board[pos].color != self.color
+            # new_x = new_pos[0] + dx
+            # new_y = new_pos[1] + dy
+            moves_arr << new_pos
+            new_pos = new_pos[new_pos[0] + dx, new_pos[1] + dy]
         end
+        # new_x = pos[0] + dx
+        # new_y = pos[1] + dy
+        # pos = [new_x, new_y]
+        # moves_arr << pos if @board[pos] != nil && @board[pos].color != self.color
+        moves_arr
     end
 end
+

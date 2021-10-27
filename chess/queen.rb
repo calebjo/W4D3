@@ -8,7 +8,7 @@ class Queen < Piece
         self.color == :W ? "\u265B" : "\u2655"
     end
 
-    private
+    protected
 
     def move_dirs
         horizontal_dirs + diagonal_dirs
