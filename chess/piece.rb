@@ -1,6 +1,8 @@
 # require_relative "./stepable.rb"
 # require_relative "./board.rb"
 require "colorize"
+require_relative "./slideable.rb"
+require_relative "./stepable.rb"
 
 class Piece
     attr_reader :color
@@ -18,15 +20,20 @@ class Piece
     end
 
     def valid_moves
-        valid_range = (0..7)
-        unless valid_range.include?(pos.first) && valid_range.include?(pos.last)
-            raise "Outside of the board." 
-            return false
-        else
-            
-        end
+        moves_array = []
 
-        true
+        (0..7).each do |row|
+            (0..7).each do |col|
+                current_pos = [row, col]
+                if @board[current_pos] == nil           # will need to refactor for NullPiece
+                    moves_array << current_pos
+                else
+                    moves_array << current_pos if @board[current_pos].color != self.color
+                end
+            end
+        end
+        # narrow this down later for each subclass
+        moves_array
     end
 
     def pos=(val)

@@ -13,8 +13,6 @@ class Board
     
     def initialize
         @rows = Board.grid
-        # debugger
-        # Board.populate
         self.populate
     end
     
@@ -22,7 +20,7 @@ class Board
         range = [0, 1, 6, 7]
         (0..@rows.length-1).each do |i|
             (0..@rows.length-1).each do |j|
-                @rows[i][j] = Piece.new("\u265E", self, [i, j]) if range.include?(i)
+                @rows[i][j] = King.new(:W, self, [i, j]) if range.include?(i)
             end
         end
     end
@@ -67,13 +65,8 @@ class Board
 end
 
 b = Board.new
-# # p = Piece.new(:W, b, [4,1])
 
-# b.print
-# p p
-# pos = [0,0]
-# b.populate
 b.print
 puts "-----------------------------"
-b.move_piece([1,0],[3,2])
-b.print
+# b.move_piece([1,0],[3,2])
+# b.print

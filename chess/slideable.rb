@@ -3,19 +3,11 @@ module Slideable
     DIAGONAL_DIRS = [[-1,1],[1,1],[-1,1],[-1,-1]]
 
     def horizontal_dirs
-        # VERTICAL
-        (1..7).each do |i|
-            HORIZONTAL_DIRS << [0, i]
-            HORIZONTAL_DIRS << [0, -i]
-        end
-        # HORIZONTAL
-        (1..7).each do |j|
-            HORIZONTAL_DIRS << [i, 0]
-            HORIZONTAL_DIRS << [-i, 0]
-        end
+        HORIZONTAL_DIRS
     end
 
     def diagonal_dirs
+        DIAGONAL_DIRS
     end
 
     def moves
