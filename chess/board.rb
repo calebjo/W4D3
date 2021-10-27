@@ -24,7 +24,7 @@ class Board
             end
         end
 
-        # ASSIGN KING HERE
+        # TEST PIECE
         @rows[1][0] = Queen.new(:W, self, [1,0])
     end
 

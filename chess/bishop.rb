@@ -5,4 +5,10 @@ class Bishop < Piece
     def symbol
         self.color == :W ? "\u265D" : "\u2657"
     end
+
+    protected
+
+    def move_dirs
+        diagonal_dirs
+    end
 end
