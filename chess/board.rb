@@ -16,14 +16,18 @@ class Board
     end
     
     def populate
+        
+
         range = [0, 1, 6, 7]
         (0..@rows.length-1).each do |i|
             (0..@rows.length-1).each do |j|
-                @rows[i][j] = NullPiece.new(:W, self, [i, j]) if range.include?(i)
+                @rows[i][j] = NullPiece.new(:W, self, [i, j])
+                # if range.include?(i)
             end
         end
 
         # ASSIGN KING HERE
+        @rows[0][0] = Knight.new(:W, self, [0,0])
     end
 
     def print
@@ -69,5 +73,5 @@ b = Board.new
 
 b.print
 puts "-----------------------------"
-# p b[[0,1]].moves
+p b[[0,0]].moves
 # b.print

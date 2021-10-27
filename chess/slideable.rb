@@ -19,9 +19,11 @@ module Slideable
     private
 
     def move_dirs
+
     end
 
     def grow_unblocked_moves_in_dir(dx, dy)
-        #(pos[0]..)
+        moves_arr = []
+        
     end
 end

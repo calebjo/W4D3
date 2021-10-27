@@ -21,7 +21,7 @@ class Piece
         (0..7).each do |row|
             (0..7).each do |col|
                 current_pos = [row, col]
-                if @board[current_pos] == nil           # will need to refactor for NullPiece
+                if @board[current_pos].is_a?(NullPiece)           # will need to refactor for NullPiece
                     moves_array << current_pos
                 else
                     moves_array << current_pos if @board[current_pos].color != self.color
