@@ -39,8 +39,9 @@ module Slideable
             moves_arr << new_pos
             new_pos = [new_pos[0] + dx, new_pos[1] + dy]
         end
-        moves_arr
+        moves_arr << new_pos if @board.valid_pos?(new_pos) && @board[new_pos].color != self.color
 
+        moves_arr
     end
 end
 

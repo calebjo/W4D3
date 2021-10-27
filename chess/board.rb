@@ -25,7 +25,7 @@ class Board
         end
 
         # TEST PIECE
-        @rows[1][0] = Queen.new(:W, self, [1,0])
+        @rows[1][0] = Bishop.new(:W, self, [1,0])
     end
 
     def print
