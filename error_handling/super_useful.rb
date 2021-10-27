@@ -1,3 +1,5 @@
+class CoffeeError < StandardError; end
+
 # PHASE 2
 def convert_to_int(str)
   Integer(str)
@@ -9,6 +11,8 @@ FRUITS = ["apple", "banana", "orange"]
 def reaction(maybe_fruit)
   if FRUITS.include? maybe_fruit
     puts "OMG, thanks so much for the #{maybe_fruit}!"
+  elsif maybe_fruit == "coffee"
+    raise CoffeeError.new("There is no such a fruit as Coffee" )
   else 
     raise StandardError 
   end 
@@ -20,6 +24,9 @@ def feed_me_a_fruit
   puts "Feed me a fruit! (Enter the name of a fruit:)"
   maybe_fruit = gets.chomp
   reaction(maybe_fruit) 
+rescue CoffeeError => e
+  puts "Entered #{maybe_fruit}"
+  retry 
 end  
 
 # PHASE 4
