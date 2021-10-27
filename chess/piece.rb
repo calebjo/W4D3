@@ -18,7 +18,15 @@ class Piece
     end
 
     def valid_moves
+        valid_range = (0..7)
+        unless valid_range.include?(pos.first) && valid_range.include?(pos.last)
+            raise "Outside of the board." 
+            return false
+        else
+            
+        end
 
+        true
     end
 
     def pos=(val)
