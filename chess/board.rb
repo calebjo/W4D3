@@ -1,4 +1,4 @@
-require_relative "./piece.rb"
+require_relative "./pieces.rb"
 require "byebug"
 require "colorize"
 
@@ -19,14 +19,16 @@ class Board
         range = [0, 1, 6, 7]
         (0..@rows.length-1).each do |i|
             (0..@rows.length-1).each do |j|
-                @rows[i][j] = King.new(:W, self, [i, j]) if range.include?(i)
+                @rows[i][j] = NullPiece.new(:W, self, [i, j]) if range.include?(i)
             end
         end
+
+        # ASSIGN KING HERE
     end
 
     def print
         @rows.each do |row|
-            p row.map{|ele| ele == nil ? ele : ele.color}
+            p row.map{|ele| ele == nil ? ele : ele.symbol}
         end
     end
 
@@ -67,5 +69,5 @@ b = Board.new
 
 b.print
 puts "-----------------------------"
-# b.move_piece([1,0],[3,2])
+# p b[[0,1]].moves
 # b.print
