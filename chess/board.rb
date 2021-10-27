@@ -3,7 +3,6 @@ require "byebug"
 require "colorize"
 
 class Board
-
     attr_accessor :rows
 
     def self.grid

@@ -1,8 +1,13 @@
-# require_relative "./stepable.rb"
-# require_relative "./board.rb"
 require "colorize"
+require_relative "./board.rb"
 require_relative "./slideable.rb"
 require_relative "./stepable.rb"
+require_relative "./bishop.rb"
+require_relative "./king.rb"
+require_relative "./knight.rb"
+require_relative "./pawn.rb"
+require_relative "./queen.rb"
+require_relative "./rook.rb"
 
 class Piece
     attr_reader :color
