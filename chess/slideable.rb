@@ -1,5 +1,5 @@
 require_relative "./piece.rb"
-
+require "byebug"
 module Slideable
     HORIZONTAL_DIRS = [[0,1],[1,0],[0,-1],[-1,0]]
     DIAGONAL_DIRS = [[-1,1],[1,1],[-1,1],[-1,-1]]
@@ -13,7 +13,17 @@ module Slideable
     end
 
     def moves
-        # returns the total moves arrays that work
+        # create array to collect moves
+
+        # iterate over each of the directions in which a Slideable piece can move
+        # use `#move_dirs` method defined in piece's class to get this info
+        # for each direction, collect all possible moves in that direction and
+        #  and add to your moves array, using `grow_unblocked_moves_in_dir`
+        moves = []
+        self.move_dirs.each do |dir|
+            moves << grow_unblocked_moves_in_dir(dir[0], dir[1])
+        end
+        moves
     end
 
     private
@@ -24,6 +34,15 @@ module Slideable
 
     def grow_unblocked_moves_in_dir(dx, dy)
         moves_arr = []
-        
+        new_x, new_y = @pos[0] + dx, @pos[1] + dy
+        pos = [new_x, new_y]
+        # debugger
+        while @board[pos].is_a?(NullPiece) || @board[pos].color != self.color
+            new_x, new_y = @pos[0] + dx, @pos[1] + dy
+            pos = [new_x, new_y]
+            moves_arr << pos
+            
+            break if @board[pos].color != self.color
+        end
     end
 end
