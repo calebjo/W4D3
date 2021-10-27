@@ -3,6 +3,8 @@ class CoffeeError < StandardError; end
 # PHASE 2
 def convert_to_int(str)
   Integer(str)
+rescue
+  str.to_i
 end
 
 # PHASE 3
@@ -35,6 +37,9 @@ class BestFriend
     @name = name
     @yrs_known = yrs_known
     @fav_pastime = fav_pastime
+    raise "Not enough years." if yrs_known < 5
+    raise "Empty name." unless name.size > 0
+    raise "Empty pastime."unless fav_pastime.size > 0
   end
 
   def talk_about_friendship
@@ -49,5 +54,3 @@ class BestFriend
     puts "Hey bestie, I made you a friendship bracelet. It says my name, #{@name}, so you never forget me." 
   end
 end
-
-
