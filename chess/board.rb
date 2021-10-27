@@ -44,26 +44,28 @@ class Board
         @rows[x][y] = value
     end
 
-    def valid_move?(star_pos, end_pos)
-        valid_range = (0..7)
-        unless valid_range.include?(end_pos.first) && valid_range.include?(end_pos.last)
-            raise "Outside of the board." 
-            return false
-        end
-        true
-    end
-
-    def move_piece(start_pos, end_pos)
-        if valid_move?(start_pos, end_pos) && (self[start_pos] != nil) && (self[end_pos] == nil)
-            this_piece = self[start_pos]
-            self[end_pos] = this_piece
-            self[start_pos] = nil
+    def valid_pos?(pos)
+        # p pos
+        valid_range = (0..7).to_a
+        if valid_range.include?(pos.first) && valid_range.include?(pos.last)
             return true
         else
-            raise "Wrong move."
             return false
         end
     end
+
+    # def move_piece(start_pos, end_pos)
+    #     if valid_pos?(start_pos) valid_pos?(end_pos) && (!self[start_pos].is_a?(NullPiece)) && (self[end_pos].is_a?(NullPiece))
+    #         this_piece = self[start_pos]
+    #         nul = self[end_pos]
+    #         self[end_pos] = this_piece
+    #         self[start_pos] = nul
+    #         return true
+    #     else
+    #         raise "Wrong move."
+    #         return false
+    #     end
+    # end
 
 end
 
